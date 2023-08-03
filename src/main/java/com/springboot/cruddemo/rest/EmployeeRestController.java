@@ -36,7 +36,7 @@ public class EmployeeRestController {
 		Employee employee = employeeService.findById(employeeId);
 
 		if(employee == null){
-			throw  new RuntimeException("Empoyee id not found - " + employeeId);
+			throw new RuntimeException("Empoyee id not found - " + employeeId);
 		}
 
 		return  employee;

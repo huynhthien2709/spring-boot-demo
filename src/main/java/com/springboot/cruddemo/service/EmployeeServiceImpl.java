@@ -20,10 +20,11 @@ public class EmployeeServiceImpl implements EmployeeService {
 
 
 
+//	@Autowired
+//	public EmployeeServiceImpl(@Qualifier("employeeDAOJpaImpl") EmployeeDAO employeeDAO) {
+//		this.employeeDAO = employeeDAO;
+//	}
 	@Autowired
-	public EmployeeServiceImpl(@Qualifier("employeeDAOJpaImpl") EmployeeDAO employeeDAO) {
-		this.employeeDAO = employeeDAO;
-	}
 	public EmployeeServiceImpl(EmployeeRepository employeeRepository) {
 		this.employeeRepository = employeeRepository;
 	}
@@ -32,14 +33,12 @@ public class EmployeeServiceImpl implements EmployeeService {
 	@Override
 	@Transactional
 	public List<Employee> findAll() {
-
 		return employeeDAO.findAll();
 	}
 
 
 	//Lab 19.2: Tạo Spring Data JPA Repository
 	@Override
-	@Transactional
 	public Employee findById(int id) {
 		Optional<Employee> result = employeeRepository.findById(id);
 		Employee employee = null;
@@ -53,6 +52,12 @@ public class EmployeeServiceImpl implements EmployeeService {
 
 		return  employee;
 	}
+
+	//user hibernate
+//	@Override
+//	public Employee findById(int id) {
+//		return employeeDAO.findById(id);
+//	}
 
 	@Override
 	public void save(Employee employee) {
